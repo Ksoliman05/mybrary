@@ -85,18 +85,20 @@ router.put("/:id", async (req, res) => {
 
 
 router.delete("/:id", async (req, res) => {
-  let author
   try {
-    author = await Author.findById(req.params.id)
-    await author.deleteOne() // Preferred in Mongoose 6+
+    const author = await Author.findById(req.params.id)
+    const books = await Book.find({ author: author.id })
+
+    if (books.length > 0) {
+      throw new Error("Cannot delete author with books")
+      res.redirect("/")
+    }
+
+    await Author.findByIdAndDelete(req.params.id)
     res.redirect("/authors")
   } catch (err) {
     console.error("Delete error:", err.message)
-    if (author == null) {
-      res.redirect("/")
-    } else {
-      res.redirect(`/authors/${author.id}`)
-    }
+    res.redirect("/authors")
   }
 })
 
