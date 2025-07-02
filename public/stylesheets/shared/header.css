@@ -5,12 +5,7 @@
 }
 
 
-.header-title {
-    color: var(--color-text-light);
-    text-decoration: none;
-    font-size: var(--nav-title-font-size);
-    font-weight: var(--nav-title-font-weight);
-}
+
 
 .header-nav {
     display: flex;
@@ -38,4 +33,31 @@
 
 .header-nav li a:hover, .header-title:hover {
     color:white;
+}
+
+
+.header-branding {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.header-title {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: var(--nav-title-font-size);
+    font-weight: var(--nav-title-font-weight);
+}
+
+.header-subtitle {
+    color: var(--color-text-light);
+    font-size: 1.5rem; /* adjust as needed */
+    font-weight: 300;
+    font-style: italic; /* makes it italic */
+    text-decoration: none;
+}
+
+
+.header-subtitle:hover {
+    color: white;
 }
