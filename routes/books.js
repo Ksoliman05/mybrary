@@ -3,6 +3,7 @@ const router = express.Router()
 const Book = require('../models/book')
 const Author = require('../models/author')
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
+const upload = require('../utils/s3');
 
 // All Books Route
 router.get('/', async (req, res) => {
@@ -33,20 +34,24 @@ router.get('/new', async (req, res) => {
 })
 
 // Create Book Route
-router.post('/', async (req, res) => {
+// Create Book Route
+router.post('/', upload.single('pdf'), async (req, res) => {
   const book = new Book({
     title: req.body.title,
     author: req.body.author,
     publishDate: new Date(req.body.publishDate),
     pageCount: req.body.pageCount,
-    description: req.body.description
+    description: req.body.description,
+    pdfUrl: req.file ? req.file.location : null  // <-- S3 URL
   })
+
   saveCover(book, req.body.cover)
 
   try {
     const newBook = await book.save()
     res.redirect(`books/${newBook.id}`)
-  } catch {
+  } catch (err) {
+    console.error('Error while creating book:', err) // << ✅ This is what you need
     renderNewPage(res, book, true)
   }
 })

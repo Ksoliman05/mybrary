@@ -11,11 +11,23 @@
   <div class="book-details-grid">
     <div class="book-details-label">Author:</div>
     <div><%= book.author.name %></div>
+
     <div class="book-details-label">Publish Date:</div>
     <div><%= book.publishDate.toDateString() %></div>
+
     <div class="book-details-label">Page Count:</div>
     <div><%= book.pageCount %></div>
+
     <div class="book-details-label">Description:</div>
     <div><%= book.description %></div>
+
+    <% if (book.pdfUrl) { %>
+      <div class="book-details-label">PDF:</div>
+      <div>
+        <a href="<%= book.pdfUrl %>" target="_blank" class="btn btn-primary">
+          Download PDF
+        </a>
+      </div>
+    <% } %>
   </div>
-</div> 
+</div>

@@ -1,18 +1,15 @@
 :root {
-    --nav-title-font-size: 3rem;
-    --nav-title-font-weight: bold;
-    --nav-link-font-weight: 300;
+    --nav-title-font-size: 2.8rem;
+    --nav-title-font-weight: 700;
+    --nav-link-font-weight: 400;
 }
-
-
-
 
 .header-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
 }
 
 .header-nav ul {
@@ -24,17 +21,20 @@
 .header-nav li {
     list-style: none;
 }
+
 .header-nav li a {
     text-decoration: none;
-    color:var(--color-text-light);
-    font-weight: var(--nav-link-font-weight) ;
-    padding: 1rem;
+    color: var(--color-text-light);
+    font-weight: var(--nav-link-font-weight);
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 .header-nav li a:hover, .header-title:hover {
-    color:white;
+    background-color: hsl(var(--color-base-hue), 30%, 30%);
+    color: white;
 }
-
 
 .header-branding {
     display: flex;
@@ -51,12 +51,10 @@
 
 .header-subtitle {
     color: var(--color-text-light);
-    font-size: 1.5rem; /* adjust as needed */
+    font-size: 1.3rem;
     font-weight: 300;
-    font-style: italic; /* makes it italic */
-    text-decoration: none;
+    font-style: italic;
 }
-
 
 .header-subtitle:hover {
     color: white;

@@ -7,7 +7,7 @@ const bookSchema = new mongoose.Schema({
     },
     description:{
         type: String,
-        ///required: true
+        // required: true
     },
     publishDate:{
         type: Date,
@@ -16,6 +16,9 @@ const bookSchema = new mongoose.Schema({
     pageCount:{
         type: Number,
         required: true
+    },
+    pdfUrl: {
+        type: String
     },
     createdAt:{
         type:Date,
@@ -36,6 +39,7 @@ const bookSchema = new mongoose.Schema({
         ref:"Author"
     }
 })
+
 
 bookSchema.virtual('coverImagePath').get(function() {
   if (this.coverImage != null && this.coverImageType != null) {
